@@ -5,7 +5,6 @@ from marshmallow import ValidationError
 from sqlalchemy.exc import SQLAlchemyError
 
 from yarn.lib import loggers
-from yarn.lib import url_lib
 from yarn.lib.database import db
 from yarn.models.book import Book
 from yarn.schemas.books_schema import BooksSchema

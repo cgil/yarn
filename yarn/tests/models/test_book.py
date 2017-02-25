@@ -18,6 +18,3 @@ class BookTestCase(BaseTestCase):
         res = Book.get(book.id)
         for attr in attrs:
             assert getattr(res, attr) == attrs[attr]
-        assert book.mobile_redirect_count == 0
-        assert book.desktop_redirect_count == 0
-        assert book.tablet_redirect_count == 0

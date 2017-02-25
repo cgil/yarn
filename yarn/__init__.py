@@ -9,7 +9,6 @@ from flask import request
 from yarn.lib.database import db
 from yarn.utils.configuration import config
 from yarn.views.health import health
-from yarn.views.book_redirects import book_redirects_blueprint
 from yarn.views.books import books_blueprint
 
 
@@ -69,6 +68,5 @@ def create_app():
     # register blueprints
     app.register_blueprint(health)
     app.register_blueprint(books_blueprint)
-    app.register_blueprint(book_redirects_blueprint)
 
     return app

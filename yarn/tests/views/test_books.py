@@ -1,6 +1,5 @@
 import datetime
 
-from yarn.lib import url_lib
 from yarn.models.book import Book
 from yarn.tests import factories
 from yarn.tests.base import ViewTestCase

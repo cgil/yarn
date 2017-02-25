@@ -1,0 +1,11 @@
+---
+debug: True
+
+database:
+  user: yarn
+  password: yarn
+  host: localhost
+  port: 5432
+  name: yarn_development
+
+secret_key: yarn

@@ -35,8 +35,7 @@ def to_json(content):
     indent = None
     separators = (',', ':')
 
-    if (current_app.config['JSONIFY_PRETTYPRINT_REGULAR']
-            and not request.is_xhr):
+    if (current_app.config['JSONIFY_PRETTYPRINT_REGULAR'] and not request.is_xhr):
         indent = 2
         separators = (', ', ': ')
 

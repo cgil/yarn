@@ -1,14 +1,14 @@
-"""create books table
+"""create publisher table
 
-Revision ID: 4e2c22a692ad
-Revises:
-Create Date: 2017-02-25 14:44:01.203557
+Revision ID: 43274ea2c116
+Revises: 4e2c22a692ad
+Create Date: 2017-02-27 20:10:01.214916
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '4e2c22a692ad'
-down_revision = None
+revision = '43274ea2c116'
+down_revision = '4e2c22a692ad'
 branch_labels = None
 depends_on = None
 
@@ -18,13 +18,9 @@ import sqlalchemy as sa
 
 def upgrade():
     op.create_table(
-        'book',
+        'publisher',
         sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('title', sa.String, nullable=False),
-        sa.Column('author', sa.String),
-        sa.Column('description', sa.String),
-        sa.Column('content', sa.Text),
-        sa.Column('cover_image_url', sa.String),
+        sa.Column('name', sa.String, nullable=False),
 
         sa.Column(
             'created_at',
@@ -44,4 +40,4 @@ def upgrade():
 
 
 def downgrade():
-    op.drop_table('book')
+    op.drop_table('publisher')

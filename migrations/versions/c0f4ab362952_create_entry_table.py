@@ -24,12 +24,12 @@ def upgrade():
         sa.Column('channel_id', sa.Integer),
         sa.Column('title', sa.String),
         sa.Column('link', sa.String),
-        sa.Column('summary', sa.String),
+        sa.Column('description', sa.String),
         sa.Column('content', sa.Text),
         sa.Column('content_type', sa.String),
         sa.Column('external_entry_id', sa.String),
-        sa.Column('publication_datetime', sa.DateTime),
-        sa.Column('publication_updated_datetime', sa.DateTime),
+        sa.Column('published_updated_datetime', sa.DateTime),
+        sa.Column('published_datetime', sa.DateTime),
 
         sa.Column(
             'created_at',

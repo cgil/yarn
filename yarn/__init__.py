@@ -9,7 +9,9 @@ from flask import request
 from yarn.lib.database import db
 from yarn.utils.configuration import config
 from yarn.views.health import health
+from yarn.views.feed import feed
 from yarn.views.books import books_blueprint
+from yarn.views.channels import channels_blueprint
 
 
 class ResponseJSON(Response):
@@ -67,5 +69,7 @@ def create_app():
     # register blueprints
     app.register_blueprint(health)
     app.register_blueprint(books_blueprint)
+    app.register_blueprint(channels_blueprint)
+    app.register_blueprint(feed)
 
     return app

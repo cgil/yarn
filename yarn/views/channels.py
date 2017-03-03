@@ -6,22 +6,23 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from yarn.lib import loggers
 from yarn.lib.database import db
-from yarn.models.book import Book
-from yarn.schemas.books_schema import BooksSchema
+from yarn.lib import feed
+from yarn.models.channel import Channel
+from yarn.schemas.channels_schema import ChannelsSchema
 from yarn.views.base import BaseAPI
 from yarn.views.base import BaseListAPI
 
 logger = loggers.get_logger(__name__)
 
 
-books_blueprint = Blueprint('books', __name__, url_prefix='/books')
-api = Api(books_blueprint)
+channels_blueprint = Blueprint('channels', __name__, url_prefix='/channels')
+api = Api(channels_blueprint)
 
 
-class BooksListAPI(BaseListAPI):
+class ChannelsListAPI(BaseListAPI):
 
-    model = Book
-    schema_model = BooksSchema
+    model = Channel
+    schema_model = ChannelsSchema
 
     def post(self):
         """Create a new record."""
@@ -37,9 +38,9 @@ class BooksListAPI(BaseListAPI):
         try:
             self.schema.validate(raw_dict)
             attrs = raw_dict['data'].get('attributes') or {}
+            channel_data = feed.fetch_channel(attrs['channel_url'])
+            record = feed.get_or_create_channel(channel_data)
 
-            record = self.model(**attrs)
-            record.save(record)
             query = self.model.get(record.id)
             result = self.schema.dump(query).data
             return result, 201
@@ -70,10 +71,10 @@ class BooksListAPI(BaseListAPI):
                 return {'error': str(e)}, 403
 
 
-class BooksAPI(BaseAPI):
+class ChannelsAPI(BaseAPI):
 
-    model = Book
-    schema_model = BooksSchema
+    model = Channel
+    schema_model = ChannelsSchema
 
-api.add_resource(BooksListAPI, '/')
-api.add_resource(BooksAPI, '/<id>')
+api.add_resource(ChannelsListAPI, '/')
+api.add_resource(ChannelsAPI, '/<id>')

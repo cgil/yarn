@@ -22,10 +22,9 @@ def upgrade():
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('publisher_id', sa.Integer),
         sa.Column('title', sa.String),
-        sa.Column('description', sa.String),
         sa.Column('link', sa.String),
-        sa.Column('publication_datetime', sa.DateTime),
-        sa.Column('external_publication_id', sa.String),
+        sa.Column('publication_updated_datetime', sa.DateTime),
+        sa.Column('public_channel_id', sa.String),
 
         sa.Column(
             'created_at',

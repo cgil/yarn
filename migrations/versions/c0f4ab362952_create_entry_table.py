@@ -27,7 +27,7 @@ def upgrade():
         sa.Column('description', sa.String),
         sa.Column('content', sa.Text),
         sa.Column('content_type', sa.String),
-        sa.Column('external_entry_id', sa.String),
+        sa.Column('public_entry_id', sa.String),
         sa.Column('published_updated_datetime', sa.DateTime),
         sa.Column('published_datetime', sa.DateTime),
 

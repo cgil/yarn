@@ -27,5 +27,5 @@ class Channel(Base):
         record = cls.get_by_public_channel_id(attrs['public_channel_id'])
         if record is None:
             record = cls(**attrs)
-            record.save()
+            record.save(record)
         return record

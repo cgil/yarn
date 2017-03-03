@@ -39,7 +39,7 @@ class ChannelsListAPI(BaseListAPI):
             self.schema.validate(raw_dict)
             attrs = raw_dict['data'].get('attributes') or {}
             channel_data = feed.fetch_channel(attrs['channel_url'])
-            record = feed.get_or_create_channel(channel_data)
+            record = feed.get_or_create_channel(channel_data.feed, attrs['channel_url'])  # TODO: Not guaranteed to fetch.
 
             query = self.model.get(record.id)
             result = self.schema.dump(query).data

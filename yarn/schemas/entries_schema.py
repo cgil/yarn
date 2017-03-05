@@ -9,14 +9,15 @@ class EntriesSchema(BaseSchema):
     publisher_id = fields.Integer()
     channel_id = fields.Integer()
     title = fields.Str()
+    channel_title = fields.Str()
     link = fields.Url()
     description = fields.Str()
     content = fields.Str()
     content_type = fields.Str()
+    media_image_url = fields.Url()
     public_entry_id = fields.Str()
     published_updated_datetime = fields.DateTime()
     published_datetime = fields.DateTime()
-
 
     class Meta:
         type_ = 'entries'

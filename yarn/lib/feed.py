@@ -2,7 +2,6 @@
 from time import mktime
 from datetime import datetime
 
-from yarn.models.publisher import Publisher
 from yarn.models.channel import Channel
 from yarn.models.entry import Entry
 
@@ -36,6 +35,8 @@ def update_or_create_entry(entry_data, channel_id):
         'description': entry_data.summary,
         'content': entry_data['content'][0].value if entry_data.get('content') else None,
         'content_type': entry_data['content'][0].type if entry_data.get('content') else None,
+        'media_image_url': (entry_data['media_content'][0]['url']
+                            if entry_data.get('media_content') else None),
         'public_entry_id': entry_data.id,
         'published_datetime': to_datetime(entry_data.published_parsed),
         'published_updated_datetime': to_datetime(entry_data.updated_parsed),
